@@ -1,14 +1,13 @@
 package app_config
 
 import (
-	"fmt"
 	"log"
 
 	"github.com/spf13/viper"
 )
 
 const (
-	configFolder = "./app_config"
+	configFileName = "./app_config/config_dev.yml"
 )
 
 type AppConfig struct {
@@ -19,12 +18,11 @@ type AppConfig struct {
 	MongoDbConfig   MongoDbConfig   `mapstructure:"mongodb"`
 	RabbitMqConfig  RabbitMQConfig  `mapstructure:"rabbitmq"`
 	OnesignalConfig OnesignalConfig `mapstructure:"onesignal"`
+	EmqxConfig      EmqxConfig      `mapstructure:"emqx"`
 }
 
-
-func LoadAppConfig(configFileName string) AppConfig {
-	configFilePath := fmt.Sprintf("%s/%s", configFolder, configFileName)
-	viper.SetConfigFile(configFilePath)
+func LoadAppConfig() AppConfig {
+	viper.SetConfigFile(configFileName)
 	err := viper.ReadInConfig()
 	if err != nil {
 		log.Fatal("Failed to read config file", err)

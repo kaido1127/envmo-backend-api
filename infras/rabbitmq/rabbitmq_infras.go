@@ -1,8 +1,10 @@
 package infras
 
 import (
-	"com.pegatech.faceswap/app_config"
-	"com.pegatech.faceswap/infras/logger"
+	"envmo/infras/logger"
+
+	"envmo/app_config"
+
 	amqp "github.com/rabbitmq/amqp091-go"
 )
 
@@ -52,10 +54,10 @@ func createRabbitMQChannel(rabbitMqConfig app_config.RabbitMQConfig) *amqp.Chann
 	}
 	_, err = channel.QueueDeclare(
 		rabbitMqConfig.CompletedTaskQueue, // tên hàng đợi
-		true,                     // durable
-		false,                    // auto-delete
-		false,                    // exclusive
-		false,                    // no-wait
+		true,                              // durable
+		false,                             // auto-delete
+		false,                             // exclusive
+		false,                             // no-wait
 		amqp.Table{
 			"x-max-priority": 10,
 		},

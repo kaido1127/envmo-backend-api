@@ -1,7 +1,8 @@
 package logger
 
 import (
-	"com.pegatech.faceswap/app_config"
+	"envmo/app_config"
+
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
 )

@@ -2,9 +2,10 @@ package infras
 
 import (
 	"context"
-	//"com.pegatech.faceswap/common/errors/error_app"
-	"com.pegatech.faceswap/app_config"
-	"com.pegatech.faceswap/infras/logger"
+	//"envmo/common/errors/error_app"
+	"envmo/app_config"
+	"envmo/infras/logger"
+
 	firebase "firebase.google.com/go/v4"
 	"firebase.google.com/go/v4/auth"
 	"google.golang.org/api/option"

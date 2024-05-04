@@ -1,15 +1,16 @@
 package infras
 
 import (
-	"com.pegatech.faceswap/app_config"
+	"envmo/app_config"
+
 	"github.com/OneSignal/onesignal-go-api"
 )
 
 type OnesignalClientProvider struct {
-	ApiClient *onesignal.APIClient
-	AppId string
+	ApiClient  *onesignal.APIClient
+	AppId      string
 	RestApiKey string
-} 
+}
 
 func CreateNewOnesignalClientByConfig(onesignalConfig app_config.OnesignalConfig) OnesignalClientProvider {
 
@@ -18,10 +19,9 @@ func CreateNewOnesignalClientByConfig(onesignalConfig app_config.OnesignalConfig
 	apiClient := onesignal.NewAPIClient(configuration)
 
 	return OnesignalClientProvider{
-		ApiClient: apiClient,
-		AppId:     onesignalConfig.AppId,
+		ApiClient:  apiClient,
+		AppId:      onesignalConfig.AppId,
 		RestApiKey: onesignalConfig.RestApiKey,
 	}
 
 }
-

@@ -4,8 +4,9 @@ import (
 	"context"
 	"os"
 
-	"com.pegatech.faceswap/app_config"
-	"com.pegatech.faceswap/infras/logger"
+	"envmo/app_config"
+	"envmo/infras/logger"
+
 	firebase "firebase.google.com/go/v4"
 	"firebase.google.com/go/v4/db"
 	"google.golang.org/api/option"

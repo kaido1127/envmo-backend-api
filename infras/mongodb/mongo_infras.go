@@ -2,9 +2,10 @@ package infras
 
 import (
 	"context"
+	"envmo/infras/logger"
 
-	"com.pegatech.faceswap/app_config"
-	"com.pegatech.faceswap/infras/logger"
+	"envmo/app_config"
+
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 )

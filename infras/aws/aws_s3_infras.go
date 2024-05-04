@@ -2,10 +2,11 @@ package infras
 
 import (
 	"context"
+	"envmo/infras/logger"
 	"fmt"
 
-	"com.pegatech.faceswap/app_config"
-	"com.pegatech.faceswap/infras/logger"
+	"envmo/app_config"
+
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/config"
 	"github.com/aws/aws-sdk-go-v2/credentials"
