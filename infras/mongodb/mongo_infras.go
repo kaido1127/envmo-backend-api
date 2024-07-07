@@ -10,6 +10,7 @@ import (
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
+
 func CreateMongoDBProviderByConfig(mongodbConfig app_config.MongoDbConfig) *mongo.Database {
 	clientOptions := options.Client().ApplyURI(mongodbConfig.ConnectionString)
 	client, err := mongo.Connect(context.Background(), clientOptions)

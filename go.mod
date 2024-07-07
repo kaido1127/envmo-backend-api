@@ -74,7 +74,7 @@ require (
 	github.com/philhofer/fwd v1.1.2 // indirect
 	github.com/pmezard/go-difflib v1.0.1-0.20181226105442-5d4384ee4fb2 // indirect
 	github.com/rivo/uniseg v0.4.7 // indirect
-	github.com/robfig/cron/v3 v3.0.0 // indirect
+	github.com/robfig/cron/v3 v3.0.1 // indirect
 	github.com/sagikazarmark/locafero v0.4.0 // indirect
 	github.com/sagikazarmark/slog-shim v0.1.0 // indirect
 	github.com/sourcegraph/conc v0.3.0 // indirect
@@ -118,7 +118,7 @@ require (
 	github.com/aws/aws-sdk-go v1.51.14 // indirect
 	github.com/aws/aws-sdk-go-v2/feature/s3/manager v1.16.14 // indirect
 	github.com/aws/aws-sdk-go-v2/service/s3 v1.53.1
-	github.com/go-playground/validator/v10 v10.19.0 // indirect
+	github.com/go-playground/validator/v10 v10.20.0 // indirect
 	github.com/gofiber/fiber/v2 v2.52.4 // indirect
 	github.com/golang/snappy v0.0.4 // indirect
 	github.com/klauspost/compress v1.17.8 // indirect

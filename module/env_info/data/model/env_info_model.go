@@ -1,13 +1,11 @@
 package model
 
-type Location struct {
-	Latitude  float64 `json:"latitude"`
-	Longitude float64 `json:"longitude"`
-}
-
 type EnvInfoModel struct {
-	CreatedAt      int64     `json:"created_at"`
-	Humidity       float64   `json:"humidity"`
-	TemperatureInC float64   `json:"temperature_in_c"`
-	Location       *Location `json:"location"`
+	MacAddr           string   `json:"mac_addr"`
+	TemperatureInC    *float32 `json:"temperature_in_celcius,omitempty"`
+	HumidityInPercent *float32 `json:"humidity_in_percent,omitempty"`
+	PressureInHpa     *float32 `json:"pressure_in_hpa,omitempty"`
+	GasInPpm          *float32 `json:"gas_in_ppm,omitempty"`
+	CreatedAt         *int64   `json:"created_at,omitempty"`
+	Location          *string  `json:"location_from_ip,omitempty"`
 }

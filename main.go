@@ -10,7 +10,9 @@ import (
 
 	"envmo/app_config"
 	emqx_infras "envmo/infras/emqx"
+	firebase_infras "envmo/infras/firebase"
 	zap_logger "envmo/infras/logger"
+	mongo_infras "envmo/infras/mongodb"
 	envinfo "envmo/module/env_info"
 	"log"
 
@@ -19,7 +21,7 @@ import (
 )
 
 func main() {
-	
+
 	configApp := app_config.LoadAppConfig()
 
 	// Logger init by config
@@ -31,8 +33,8 @@ func main() {
 	defer zap_logger.Sync()
 
 	// MongoDB init by config
-	// mongoDB := mongodb_infras.CreateMongoDBProviderByConfig(configApp.MongoDbConfig)
-	// zap_logger.Info("Complete MongoDB configuration")
+	mongoDB := mongo_infras.CreateMongoDBProviderByConfig(configApp.MongoDbConfig)
+	zap_logger.Info("Complete MongoDB configuration")
 
 	// // AWS S3 init by config
 	// s3Client := aws_infras.CreateS3ClientProviderByConfig(configApp.AwsS3Config)
@@ -48,11 +50,16 @@ func main() {
 	// FirebaseAuth config
 
 	// Emqx init by config
-	emqxClient := emqx_infras.CreateEmqxClientByConfig(configApp.EmqxConfig)
-	zap_logger.Info("Complete Emqx configuration", "emqx", emqxClient.Client)
+	emqxPubClient := emqx_infras.CreateEmqxPublisherByConfig(configApp.EmqxConfig)
+	zap_logger.Info("Complete EmqxPub configuration")
 
-	envinfo.SetupEnvInfo(emqxClient)
-	
+	emqxSubClient := emqx_infras.CreateEmqxSubscriberByConfig(configApp.EmqxConfig)
+	zap_logger.Info("Complete EmqxPub configuration")
+
+	// RealtimeDB init by config
+	realtimeDbClient := firebase_infras.CreateRealtimeDbClientByConfig(configApp.FirebaseConfig)
+	zap_logger.Info("Complete Firebase configuration")
+
 	app := fiber.New()
 	app.Use(logger.New(
 		logger.Config{
@@ -60,10 +67,9 @@ func main() {
 		},
 	))
 
-	//zap_logger.Info("Complete FirebaseAuth configuration")
+	envinfo.SetupEnvInfo(app,emqxPubClient, emqxSubClient, *realtimeDbClient, *mongoDB)
 
-	// RealtimeDB config
-	//realtimeDbClient := firebase_infras.CreateRealtimeDbClientByConfig(configApp.FirebaseConfig)
+	//zap_logger.Info("Complete FirebaseAuth configuration")
 
 	// video_template.SetupVideoTemplate(app, mongoDB)
 	// image_template.SetupImageTemplate(app, mongoDB)
