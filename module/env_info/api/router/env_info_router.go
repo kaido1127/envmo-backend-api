@@ -15,5 +15,10 @@ func SetUpRoutes(app *fiber.App, controller *controller.EnvmoController) {
 
 	envInfo := app.Group(EnvmoInfoGroup)
 	envInfo.Get("/history", controller.GetEnvmoHistoryHandler)
-
+	envInfo.Post("/devices/14-18-C3-3B-A4-8E/subscribe", func(c *fiber.Ctx) error {
+		return c.SendString("Subscribed 14-18-C3-3B-A4-8E successfully")
+	})
+	envInfo.Post("/devices/14-18-C3-3B-A4-8E/unsubscribe", func(c *fiber.Ctx) error {
+		return c.SendString("Unsubscribed 14-18-C3-3B-A4-8E successfully")
+	})
 }

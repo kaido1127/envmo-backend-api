@@ -1,7 +1,7 @@
 package model
 
 type EnvInfoModel struct {
-	MacAddr           string   `json:"mac_addr"`
+	MacAddr           string   `json:"device_id"`
 	TemperatureInC    *float32 `json:"temperature_in_celcius,omitempty"`
 	HumidityInPercent *float32 `json:"humidity_in_percent,omitempty"`
 	PressureInHpa     *float32 `json:"pressure_in_hpa,omitempty"`

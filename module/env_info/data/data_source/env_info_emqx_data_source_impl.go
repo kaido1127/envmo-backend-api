@@ -96,11 +96,11 @@ func fakeEnvInfoModel() model.EnvInfoModel {
 	pressureInHpa := randomPressureInHpa()
 	gasInPpm := randomGasInPpm()
 
-	location := "242/364 Giai Phong"
+	location := "Unknown"
 	createdAt := time.Now().Unix()
 
 	return model.EnvInfoModel{
-		MacAddr:           "fake_mac_addr_1",
+		MacAddr:           "14-18-C3-3B-A4-8E",
 		TemperatureInC:    &temperatureInC,
 		HumidityInPercent: &humidity,
 		PressureInHpa:     &pressureInHpa,
@@ -112,8 +112,8 @@ func fakeEnvInfoModel() model.EnvInfoModel {
 
 func randomGasInPpm() float32 {
 	rand.Seed(uint64(time.Now().UnixNano()))
-	minGas := 400.0
-	maxGas := 2000.0
+	minGas := 600.0
+	maxGas := 650.0
 	return float32(minGas + rand.Float64()*(maxGas-minGas))
 }
 
